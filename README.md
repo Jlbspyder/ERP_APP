@@ -1,16 +1,69 @@
-# React + Vite
+# ERP System with RBAC
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern Enterprise Resource Planning (ERP) frontend application built with React and Vite, featuring Role-Based Access Control (RBAC), employee management, leave request workflows, authentication, audit logging, protected routes, and dashboard analytics.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Authentication & Authorization
+-   Login system
+-   Role-Based AccessControl (RBAC)
+-   Permission based route protection
+    Dynamic sidebar access based on user permissions
+Employee Management
+-   Add and manage employee
+-   Dynamic employee status updates
+-   Employee activity tracking
+Leave Management
+-   Employee leave request submission
+-   Leave approval/rejection workflow
+-   Pending leave analytics
+Audit Logging System
+-   Tracks employee and leave related actions
+-   Relative timestamps
+-   Scalable audit history architecture
+Dashboard Analytics
+-   Employee statistics
+-   Leave summaries
+-   Activity feed widgets
+-   Responsive dashboard layout
+UI/UX
+-   Toast notifications
+-   Responsive enterprise style layout
+-   Modular reusable components
+-   Protected routes and permission guards
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+-   React
+-   React Router DOM
+-   Context API
+-   CSS3
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+
+    src/
+    │
+    ├── components/
+    ├── context/
+    ├── data/
+    ├── hooks/
+    ├── layouts/
+    ├── pages/
+    ├── routes/
+    ├── utils/
+    └── styles/
+
+## Installation
+
+Clone the repository:
+    git clone https://github.com/Jlbspyder/ERP_APP.git
+
+Navigate into the project:
+    cd ERP_APP
+
+Install dependencies:
+    npm install
+
+Start development server:
+    npm run dev
