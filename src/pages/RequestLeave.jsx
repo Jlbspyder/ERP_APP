@@ -8,6 +8,8 @@ const emptyLeaveForm = {
   numberOfDays: "",
   startDate: "",
   endDate: "",
+  department: "",
+  role: "",
   reason: "",
 };
 
@@ -72,7 +74,7 @@ export default function RequestLeave() {
       name: user?.name,
       role: user?.role,
       days: formData.numberOfDays,
-      department: employeeProfile?.department,
+      department: formData.department,
     });
     setFormData(emptyLeaveForm);
 
@@ -110,6 +112,26 @@ export default function RequestLeave() {
                 type="date"
                 name="endDate"
                 value={formData.endDate}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              Department
+              <input
+                type="text"
+                name="department"
+                placeholder="E.g. Engineering"
+                value={formData.department}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              Role
+              <input
+                type="text"
+                name="role"
+                placeholder="E.g. Payroll Analyst"
+                value={formData.role}
                 onChange={handleChange}
               />
             </label>

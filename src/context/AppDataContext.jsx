@@ -24,7 +24,19 @@ export function AppDataProvider({ children }) {
       return mockUsers;
     }
   });
-  const [leaveRequests, setLeaveRequests] = useState(initialLeaveRequests);
+  const [leaveRequests, setLeaveRequests] = useState(() => {
+    const savedRequests = localStorage.getItem("rbac_leave_requests");
+    if (!savedRequests) {
+      return initialLeaveRequests;
+    }
+    try {
+      const parsedRequests = JSON.parse(savedRequests);
+      return Array.isArray(parsedRequests) ? parsedRequests : initialLeaveRequests;
+    } catch {
+      return initialLeaveRequests;
+    }
+  });
+  
   const [auditLogs, setAuditLogs] = useState(() => {
     const savedLogs = localStorage.getItem("rbac_audit_logs");
     if (!savedLogs) {
@@ -37,6 +49,7 @@ export function AppDataProvider({ children }) {
       return initialAuditLog;
     }
   });
+
 
   const addAuditLog = ({ action, actor, target }) => {
     const newLog = {
@@ -105,6 +118,10 @@ export function AppDataProvider({ children }) {
     };
 
     setLeaveRequests((prevRequests) => [newRequest, ...prevRequests]);
+    localStorage.setItem(
+      "rbac_leave_requests",
+      JSON.stringify([newRequest, ...leaveRequests]),
+    );
 
     addAuditLog({
       actor: actorInfo?.name || "Unknown Employee",
