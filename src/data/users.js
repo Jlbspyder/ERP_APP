@@ -36,7 +36,7 @@ export const mockUsers = [
   },
   {
     id: "3",
-    name: "Michael Brookes",
+    name: "Senne Lammens",
     email: "manager@demo.com",
     password: "password123",
     role: "Manager",
@@ -45,7 +45,7 @@ export const mockUsers = [
   },
   {
     id: "4",
-    name: "Ella Fitgerald",
+    name: "Bruno Fernandez",
     email: "employee@demo.com",
     password: "password123",
     role: "Employee",
