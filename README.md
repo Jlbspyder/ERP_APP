@@ -4,29 +4,29 @@ A modern Enterprise Resource Planning (ERP) frontend application built with Reac
 
 ## Features
 
-Authentication & Authorization
+### Authentication & Authorization
 -   Login system
 -   Role-Based AccessControl (RBAC)
 -   Permission based route protection
     Dynamic sidebar access based on user permissions
-Employee Management
+### Employee Management
 -   Add and manage employee
 -   Dynamic employee status updates
 -   Employee activity tracking
-Leave Management
+### Leave Management
 -   Employee leave request submission
 -   Leave approval/rejection workflow
 -   Pending leave analytics
-Audit Logging System
+### Audit Logging System
 -   Tracks employee and leave related actions
 -   Relative timestamps
 -   Scalable audit history architecture
-Dashboard Analytics
+### Dashboard Analytics
 -   Employee statistics
 -   Leave summaries
 -   Activity feed widgets
 -   Responsive dashboard layout
-UI/UX
+### UI/UX
 -   Toast notifications
 -   Responsive enterprise style layout
 -   Modular reusable components
@@ -54,16 +54,3 @@ UI/UX
     ├── utils/
     └── styles/
 
-## Installation
-
-Clone the repository:
-    git clone https://github.com/Jlbspyder/ERP_APP.git
-
-Navigate into the project:
-    cd ERP_APP
-
-Install dependencies:
-    npm install
-
-Start development server:
-    npm run dev
