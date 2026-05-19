@@ -1,6 +1,6 @@
 # ERP System with RBAC
 
-A modern Enterprise Resource Planning (ERP) frontend application built with React and Vite, featuring Role-Based Access Control (RBAC), employee management, leave request workflows, authentication, audit logging, protected routes, and dashboard analytics.
+A modern Enterprise Resource Planning (ERP) application built with React and Vite, featuring Role-Based Access Control (RBAC), employee management, leave request workflows, authentication, audit logging, protected routes, and dashboard analytics.
 
 ## Features
 
