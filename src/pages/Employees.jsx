@@ -143,7 +143,10 @@ export default function Employees() {
   };
 
   const handleStatusChange = (employeeId, status) => {
-    updateEmployeeStatus(employeeId, status);
+    updateEmployeeStatus(employeeId, status, {
+      name: user?.name
+    });
+    
     showToast({ message: `Employee status updated to ${status}.` });
   };
   

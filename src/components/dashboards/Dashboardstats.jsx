@@ -20,7 +20,7 @@ export default function DashboardStats() {
       link: "/employees",
     },
     {
-      title: "Pending Leave",
+      title: "Leave Request",
       value: pendingLeaveCount,
       description: "Awaiting approval",
       link: "/leave-requests",
