@@ -815,15 +815,10 @@ button:disabled {
   }
 }
 @media (max-width: 640px) {
-   .table-row strong {
+  .table-row strong {
     display: inline-block;
-    width: max-content;
-    max-width: 100%;
-    word-break: keep-all !important;
-    white-space: nowrap !important;
-    overflow-wrap: normal !important;
-    text-overflow: ellipsis;
-    line-height: 1.3;
+    white-space: nowrap;
+    text-decoration: none;
   }
   .table-row > div:first-child {
     width: 100%;
