@@ -366,14 +366,15 @@ button {
 .login-card {
   background: #fff;
   border: 1px solid #e2e8f0;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
 }
-
+.table-card.msg {
+  padding: 10px 20px;
+}
 .stat-card {
   padding: 22px;
 }
-
 .stat-card p,
 .stat-card h2,
 .stat-card span {
@@ -405,7 +406,6 @@ button {
   padding: 18px 20px;
   border-bottom: 1px solid #e2e8f0;
 }
-
 .table-row:last-child {
   border-bottom: none;
 }
@@ -806,5 +806,16 @@ button:disabled {
   .primary-button.leave {
     width: 100%;
     margin-top: 10px;
+  }
+  .table-row strong {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+  }
+  .table-row > div:first-child {
+    min-width: 0;
+    flex: 1;
   }
 }

@@ -13,19 +13,18 @@ export default function LeaveRequests() {
 
   const visibleRequests = useMemo(() => {
     return leaveRequests.filter((request) =>
-      statusFilter === "all" ? true : request.status === statusFilter
+      statusFilter === "all" ? true : request.status === statusFilter,
     );
   }, [leaveRequests, statusFilter]);
 
   const handleLeaveDecision = (requestId, status) => {
-    updateLeaveStatus(requestId, status, { 
+    updateLeaveStatus(requestId, status, {
       name: user.name,
       department: user.department,
       days: leaveRequests.find((req) => req.id === requestId)?.days || 0,
       target: requestId,
     });
     showToast({ message: `Leave request ${status.toLowerCase()}.` });
-    
   };
 
   return (
@@ -37,7 +36,10 @@ export default function LeaveRequests() {
           <p>Review and manage leave approvals based on your access level.</p>
         </div>
 
-        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+        <select
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+        >
           <option value="all">All Requests</option>
           <option value="Pending">Pending</option>
           <option value="Approved">Approved</option>
@@ -46,35 +48,54 @@ export default function LeaveRequests() {
       </div>
 
       <div className="table-card">
-        {visibleRequests.map((request) => (
-          <div className="table-row small" key={request.id}>
-            <div>
-              <strong>{request.employee}</strong>
-              <span>{request.id}</span>
-            </div>
-            <p>{request.department}</p>
-            <p>{request.type}</p>
-            <span>{request.days} day(s)</span>
-            <span className="status-pill main">{request.status}</span>
+        {visibleRequests.length === 0 ? (
+          <div className="empty-state">
+            <h3>
+              No {statusFilter === "all" ? "" : statusFilter.toLowerCase()}{" "}
+              leave requests
+            </h3>
 
-            {canApproveLeave && request.status === "Pending" ? (
-              <div className="button-group">
-                <button
-                  className="secondary-button"
-                  onClick={() => handleLeaveDecision(request.id, "Approved")}
-                >
-                  Approve
-                </button>
-                <button
-                  className="danger-button"
-                  onClick={() => handleLeaveDecision(request.id, "Rejected")}
-                >
-                  Reject
-                </button>
-              </div>
-            ) : null}
+            <p>
+              {statusFilter === "all"
+                ? "There are currently no leave requests in the system."
+                : `There are currently no ${statusFilter.toLowerCase()} leave requests.`}
+            </p>
           </div>
-        ))}
+        ) : (
+          visibleRequests.map((request) => (
+            <div className="table-row small" key={request.id}>
+              <div>
+                <strong>{request.employee}</strong>
+                <span>{request.id}</span>
+              </div>
+
+              <p>{request.department}</p>
+              <p>{request.type}</p>
+
+              <span>{request.days} day(s)</span>
+
+              <span className="status-pill main">{request.status}</span>
+
+              {canApproveLeave && request.status === "Pending" ? (
+                <div className="button-group">
+                  <button
+                    className="secondary-button"
+                    onClick={() => handleLeaveDecision(request.id, "Approved")}
+                  >
+                    Approve
+                  </button>
+
+                  <button
+                    className="danger-button"
+                    onClick={() => handleLeaveDecision(request.id, "Rejected")}
+                  >
+                    Reject
+                  </button>
+                </div>
+              ) : null}
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
