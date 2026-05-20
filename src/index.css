@@ -811,7 +811,7 @@ button:disabled {
     display: block;
     width: max-content;
     max-width: 100%;
-    white-space: nowrap;
+    white-space: nowrap !important;
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 1.3;
