@@ -97,27 +97,30 @@ export default function RequestLeave() {
 
         <div className="form-grd">
           <div className="form-column">
-            <label>
+            <label htmlFor="start">
               Start Date
               <input
+                id="start"
                 type="date"
                 name="startDate"
                 value={formData.startDate}
                 onChange={handleChange}
               />
             </label>
-            <label>
+            <label htmlFor="end">
               End Date
               <input
+                id="end"
                 type="date"
                 name="endDate"
                 value={formData.endDate}
                 onChange={handleChange}
               />
             </label>
-            <label>
+            <label htmlFor="dept">
               Department
               <input
+                id="dept"
                 type="text"
                 name="department"
                 placeholder="E.g. Engineering"
@@ -125,9 +128,10 @@ export default function RequestLeave() {
                 onChange={handleChange}
               />
             </label>
-            <label>
+            <label htmlFor="role">
               Role
               <input
+                id="role"
                 type="text"
                 name="role"
                 placeholder="E.g. Payroll Analyst"
@@ -135,9 +139,14 @@ export default function RequestLeave() {
                 onChange={handleChange}
               />
             </label>
-             <label>
+            <label htmlFor="type">
               Leave Type
-              <select name="type" value={formData.type} onChange={handleChange}>
+              <select
+                id="type"
+                name="type"
+                value={formData.type}
+                onChange={handleChange}
+              >
                 <option value="">Select Leave Type</option>
                 <option value="Annual">Annual Leave</option>
                 <option value="Sick">Sick Leave</option>
@@ -147,15 +156,21 @@ export default function RequestLeave() {
                 <option value="Paternity">Paternity Leave</option>
               </select>
             </label>
-            <label>
+            <label htmlFor="duration">
               Duration
-              <input type="text" value={!leaveDays ? "" : `${leaveDays} day(s)`} readOnly />
+              <input
+                id="duration"
+                type="text"
+                value={!leaveDays ? "" : `${leaveDays} day(s)`}
+                readOnly
+              />
             </label>
           </div>
 
-          <label>
+          <label htmlFor="reason">
             Reason
             <textarea
+              id="reason"
               name="reason"
               className="reason"
               value={formData.reason}

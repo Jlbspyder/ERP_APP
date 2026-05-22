@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext.jsx";
 import { can } from "../utils/permissions.js";
 import { useFeatureFlag } from "../hooks/useFeatureFlag.js";
 
-export default function Sidebar() {
+export default function Sidebar({ closeSidebar}) {
   const { user } = useAuth();
   const canViewPayroll = useFeatureFlag("payrollModule");
   const canViewAuditLogs = useFeatureFlag("auditLogs");
@@ -24,7 +24,7 @@ export default function Sidebar() {
     <aside className="sidebar">
       <div className="brand">
         <span className="brand-mark">R</span>
-        <div>
+        <div className="brand-text">
           <h1>RoleBase</h1>
           <p>Access Control</p>
         </div>
@@ -35,6 +35,7 @@ export default function Sidebar() {
           <NavLink
             key={item.path}
             to={item.path}
+            onClick={closeSidebar}
             className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
           >
             {item.label}

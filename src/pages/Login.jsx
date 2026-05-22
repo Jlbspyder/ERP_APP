@@ -41,9 +41,10 @@ export default function Login() {
         </div>
 
         <form onSubmit={handleSubmit} className="login-form">
-          <label>
+          <label htmlFor="email">
             Email
             <input
+              id="email"
               type="email"
               name="email"
               value={formData.email}
@@ -52,9 +53,10 @@ export default function Login() {
             />
           </label>
 
-          <label>
+          <label htmlFor="password">
             Password
             <input
+              id="password"
               type="password"
               name="password"
               value={formData.password}

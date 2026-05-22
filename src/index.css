@@ -227,9 +227,9 @@ button {
   color: #64748b;
 }
 .brand-mark {
-  width: 40px;
-  height: 32px;
-  border-radius: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -242,7 +242,9 @@ button {
   height: 46px;
   font-size: 24px;
 }
-
+.brand-text {
+  width: 70%;
+}
 .nav-list {
   display: grid;
   gap: 8px;
@@ -721,6 +723,13 @@ button:disabled {
 .view-all-link:hover {
   text-decoration: underline;
 }
+.mobile-header {
+  display: none;
+}
+
+.sidebar-overlay {
+  display: none;
+}
 
 @media (max-width: 1024px) {
   .table-row {
@@ -812,6 +821,69 @@ button:disabled {
   .primary-button.leave {
     width: 100%;
     margin-top: 10px;
+  }
+}
+
+@media (max-width: 820px) {
+  .app-layout {
+    display: block;
+  }
+
+  .mobile-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: #0f172a;
+    color: #ffffff;
+  }
+
+  .menu-button {
+    border: none;
+    background: #38bdf8;
+    color: #0f172a;
+    font-size: 22px;
+    font-weight: 700;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1200;
+    width: 280px;
+    height: 100vh;
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+  }
+  .sidebar.close {
+    transform: translateX(-100%);
+  }
+  .nav-link {
+    transform: translateX(0);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    background: rgba(15, 23, 42, 0.55);
+  }
+
+  .main-content {
+    width: 100%;
+    padding: 24px 18px;
   }
 }
 @media (max-width: 640px) {
