@@ -1,14 +1,14 @@
 import { mockUsers } from "../data/users.js";
 
 const permissionLabels = [
-  "view_dashboard",
-  "view_employees",
-  "manage_employees",
-  "view_leave",
-  "approve_leave",
-  "view_payroll",
-  "manage_payroll",
-  "view_settings",
+  "View_Dashboard",
+  "View_Employees",
+  "manage_Employees",
+  "View_Leave",
+  "approve_Leave",
+  "View_Payroll",
+  "manage_Payroll",
+  "View_Settings",
 ];
 
 export default function Permission() {
@@ -21,29 +21,42 @@ export default function Permission() {
       </div>
 
       <div className="matrix-card">
-        <div className="matrix-row matrix-header">
-          <strong id="strong">Role</strong>
-          {permissionLabels.map((permission) => (
-            <strong key={permission}>{permission.replaceAll("_", " ")}</strong>
+        <div className="matrix-fixed-column">
+          <div className="matrix-cell matrix-header-cell">Role</div>
+
+          {mockUsers.map((user) => (
+            <div className="matrix-cell" key={user.id}>
+              {user.role}
+            </div>
           ))}
         </div>
 
-        {mockUsers.map((user) => (
-          <div className="matrix-row" key={user.id}>
-            <strong id="role">{user.role}</strong>
-
+        <div className="matrix-scroll-area">
+          <div className="matrix-permission-row matrix-header-row">
             {permissionLabels.map((permission) => (
-              <span
-                key={permission}
-                className={
-                  user.permissions.includes(permission) ? "check" : "cross"
-                }
-              >
-                {user.permissions.includes(permission) ? "Yes" : "No"}
-              </span>
+              <strong className="matrix-cell" key={permission}>
+                {permission.replaceAll("_", " ")}
+              </strong>
             ))}
           </div>
-        ))}
+
+          {mockUsers.map((user) => (
+            <div className="matrix-permission-row" key={user.id}>
+              {permissionLabels.map((permission) => (
+                <span
+                  className={
+                    user.permissions.includes(permission)
+                      ? "matrix-cell check"
+                      : "matrix-cell cross"
+                  }
+                  key={permission}
+                >
+                  {user.permissions.includes(permission) ? "Yes" : "No"}
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

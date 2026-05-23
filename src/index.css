@@ -63,7 +63,6 @@ button {
   border-radius: 10px;
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
 }
-
 .toolbar-card {
   display: flex;
   gap: 12px;
@@ -157,33 +156,65 @@ button {
 }
 
 .matrix-card {
+  display: flex;
+  max-width: 100%;
+  overflow: hidden;
+}
+.matrix-fixed-column {
+  flex: 0 0 150px;
+  background: #ffffff;
+  z-index: 2;
+  box-shadow: 8px 0 12px rgba(15, 23, 42, 0.08);
+}
+.matrix-scroll-area {
   overflow-x: auto;
+  flex: 1;
+}
+.matrix-permission-row {
+  display: grid;
+  grid-template-columns: repeat(8, 200px);
+  min-height: 40px;
 }
 
+.matrix-cell {
+  padding: 20px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e8f0;
+}
+.matrix-header-cell,
+.matrix-header-row .matrix-cell {
+  font-weight: 700;
+}
 .matrix-row {
-  min-width: 920px;
+  min-width: max-content;
   display: grid;
   grid-template-columns: 90px repeat(8, 1fr);
+  grid-template-columns: 80px repeat(8, 160px);
   gap: 12px;
   padding: 14px 18px;
   border-bottom: 1px solid #e2e8f0;
   align-items: center;
 }
-
+.matrix-role-cell {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: #ffffff;
+}
+.matrix-header .matrix-role-cell {
+  z-index: 3;
+  text-align: left;
+}
 .matrix-row:last-child {
   border-bottom: none;
 }
-#strong {
-  text-align: left;
-}
-
 .matrix-header {
   background: #f8fafc;
   color: #334155;
   text-align: center;
-}
-#role {
-  width: 70%;
 }
 .check {
   color: #15803d;
@@ -777,6 +808,7 @@ button:disabled {
     flex-direction: column;
     align-items: flex-start;
     height: auto;
+    border-radius: 5px;
     padding: 20px;
   }
   .toolbar-card,
@@ -898,5 +930,16 @@ button:disabled {
   }
   .table-row.small {
     grid-template-columns: 1fr;
+  }
+  .page-content {
+    padding: 10px;
+  }
+  .form-grid label,
+  .form-column label {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  .form-grd label {
+    font-weight: bold;
   }
 }

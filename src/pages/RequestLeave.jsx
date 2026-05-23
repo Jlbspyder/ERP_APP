@@ -128,10 +128,10 @@ export default function RequestLeave() {
                 onChange={handleChange}
               />
             </label>
-            <label htmlFor="role">
+            <label htmlFor="rol">
               Role
               <input
-                id="role"
+                id="rol"
                 type="text"
                 name="role"
                 placeholder="E.g. Payroll Analyst"
