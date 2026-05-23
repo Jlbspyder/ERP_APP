@@ -178,7 +178,7 @@ button {
 
 .matrix-cell {
   padding: 20px;
-  min-height: 40px;
+  min-height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -191,7 +191,6 @@ button {
 .matrix-row {
   min-width: max-content;
   display: grid;
-  grid-template-columns: 90px repeat(8, 1fr);
   grid-template-columns: 80px repeat(8, 160px);
   gap: 12px;
   padding: 14px 18px;
@@ -371,7 +370,6 @@ button {
   flex-direction: column;
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  /* align-items: start; */
 }
 
 .dashboard-card {
@@ -941,5 +939,15 @@ button:disabled {
   }
   .form-grd label {
     font-weight: bold;
+  }
+  .matrix-fixed-column {
+    flex: 0 0 100px;
+  }
+  .matrix-permission-row {
+    grid-template-columns: repeat(8, 100px);
+  }
+  .matrix-cell {
+    min-height: 100px;
+    text-align: center;
   }
 }

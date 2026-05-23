@@ -3,11 +3,11 @@ import { mockUsers } from "../data/users.js";
 const permissionLabels = [
   "View_Dashboard",
   "View_Employees",
-  "manage_Employees",
+  "Manage_Employees",
   "View_Leave",
-  "approve_Leave",
+  "Approve_Leave",
   "View_Payroll",
-  "manage_Payroll",
+  "Manage_Payroll",
   "View_Settings",
 ];
 
