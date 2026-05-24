@@ -182,7 +182,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
 }
 .matrix-header-cell,
 .matrix-header-row .matrix-cell {
@@ -468,6 +468,8 @@ button {
   font-size: 13px;
   padding: 10px 12px;
   font-weight: 700;
+  background: #0f172a;
+  color: #fff;
 }
 .secondary-button:hover {
   background: #cbd5e1;
@@ -480,9 +482,8 @@ button {
   align-items: center;
   gap: 10px;
 }
-.primary-button {
-  background: #0f172a;
-  color: #fff;
+.primary-button:hover {
+  background: rgb(19, 19, 114);
 }
 
 .secondary-button {
