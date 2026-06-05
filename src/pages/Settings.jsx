@@ -57,11 +57,18 @@ function Settings() {
         <div className="settings-header">
           <div>
             <h1>Settings</h1>
-            <p>Manage system preferences, security rules, payroll defaults, and notifications.</p>
+            <p>
+              Manage system preferences, security rules, payroll defaults, and
+              notifications.
+            </p>
           </div>
           <div className="settings-actions">
-            {saveMessage && <span className="settings-save-message">{saveMessage}</span>}
-            <button className="settings-save-btn" type="submit">Save changes</button>
+            {saveMessage && (
+              <span className="settings-save-message">{saveMessage}</span>
+            )}
+            <button className="settings-save-btn" type="submit">
+              Save changes
+            </button>
           </div>
         </div>
 
@@ -251,6 +258,14 @@ function Settings() {
           </div>
         </section>
       </form>
+      <div className="settings-actions">
+        {saveMessage && (
+          <span className="settings-save-message">{saveMessage}</span>
+        )}
+        <button className="settings-save-btn mobile" type="submit">
+          Save changes
+        </button>
+      </div>
     </main>
   );
 }

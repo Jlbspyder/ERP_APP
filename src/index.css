@@ -769,7 +769,8 @@ button:disabled {
   display: flex;
   gap: 10px;
 }
-.btn-group button, .edit-button {
+.btn-group button,
+.edit-button {
   border-radius: 5px;
   font-size: 13px;
   padding: 6px 12px;
@@ -780,8 +781,8 @@ button:disabled {
   color: #172033;
   border: none;
 }
-.btn-group button.cancel-button:hover { 
-   background: #ced0d1;
+.btn-group button.cancel-button:hover {
+  background: #ced0d1;
 }
 
 .status {
@@ -1204,6 +1205,18 @@ button:disabled {
   height: 16px;
   accent-color: #2563eb;
 }
+ .mobile {
+   display: none;
+  }
+
+@media (min-width: 760px) and (max-width: 1000px) {
+  .settings-header p {
+    max-width: 350px;
+  }
+  .mobile {
+   display: none;
+  }
+}
 
 @media (max-width: 760px) {
   .settings-header,
@@ -1227,5 +1240,11 @@ button:disabled {
     align-items: stretch;
     flex-direction: column;
     width: 100%;
+  }
+  .settings-save-btn {
+   display: none;
+  }
+  .mobile {
+    display: block;
   }
 }
