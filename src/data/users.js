@@ -7,15 +7,15 @@ export const mockUsers = [
     role: "Admin",
     status: "Active",
     permissions: [
-      "View_Dashboard",
       "View_Employees",
       "Manage_Employees",
       "View_Leave",
       "Request_Leave",
       "Approve_Leave",
-      "View_Payroll",
       "Manage_Payroll",
       "View_Settings",
+      "View_Audit_Logs",
+      "View_Permissions",
     ],
   },
   {
@@ -26,12 +26,12 @@ export const mockUsers = [
     role: "HR",
     status: "Active",
     permissions: [
-      "View_Dashboard",
       "View_Employees",
       "Request_Leave",
+      "Manage_Payroll",
       "Manage_Employees",
-      "View_Leave",
       "Approve_Leave",
+      "View_Leave",
     ],
   },
   {
@@ -41,7 +41,7 @@ export const mockUsers = [
     password: "password123",
     role: "Manager",
     status: "Active",
-    permissions: ["View_Dashboard", "View_Employees", "Request_Leave", "View_Leave", "Approve_Leave"],
+    permissions: ["View_Employees", "Request_Leave", "View_Leave"],
   },
   {
     id: "4",
@@ -50,6 +50,6 @@ export const mockUsers = [
     password: "password123",
     role: "Employee",
     status: "Active",
-    permissions: ["View_Dashboard", "View_Leave", "Request_Leave"],
+    permissions: ["Request_Leave", "View_Leave"],
   },
 ];

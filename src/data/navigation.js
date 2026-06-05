@@ -2,41 +2,40 @@ export const navigationItems = [
   {
     label: "Dashboard",
     path: "/dashboard",
-    permission: "view_dashboard",
   },
   {
     label: "Employees",
     path: "/employees",
-    permission: "view_employees",
+    permission: "View_Employees",
   },
   {
     label: "Leave Requests",
     path: "/leave-requests",
-    permission: "view_leave",
+    permission: "View_Leave",
   },
   {
     label: "Request Leave",
     path: "/request-leave",
-    permission: "request_leave",
+    permission: "Request_Leave",
   },
   {
     label: "Payroll",
     path: "/payroll",
-    permission: "view_payroll",
+    permission: "Manage_Payroll",
   },
   {
     label: "Permissions",
     path: "/permissions",
-    permission: "view_settings",
+    permission: "View_Permissions",
   },
   {
     label: "Audit Logs",
     path: "/audit-logs",
-    permission: "view_settings",
+    permission: "View_Audit_Logs",
   },
   {
     label: "Settings",
     path: "/settings",
-    permission: "view_settings",
+    permission: "View_Settings",
   },
 ];

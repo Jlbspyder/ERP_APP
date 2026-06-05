@@ -1,5 +1,6 @@
 import { createContext, useContext, useMemo, useState } from "react";
 import { initialEmployees } from "../data/employees.js";
+import { initialPayrollRecords } from "../data/payroll.js";
 import { initialLeaveRequests } from "../data/leaveRequests.js";
 import { initialAuditLog } from "../data/auditLog.js";
 import { mockUsers } from "../data/users.js";
@@ -31,12 +32,14 @@ export function AppDataProvider({ children }) {
     }
     try {
       const parsedRequests = JSON.parse(savedRequests);
-      return Array.isArray(parsedRequests) ? parsedRequests : initialLeaveRequests;
+      return Array.isArray(parsedRequests)
+        ? parsedRequests
+        : initialLeaveRequests;
     } catch {
       return initialLeaveRequests;
     }
   });
-  
+
   const [auditLogs, setAuditLogs] = useState(() => {
     const savedLogs = localStorage.getItem("rbac_audit_logs");
     if (!savedLogs) {
@@ -47,6 +50,21 @@ export function AppDataProvider({ children }) {
       return Array.isArray(parsedLogs) ? parsedLogs : initialAuditLog;
     } catch {
       return initialAuditLog;
+    }
+  });
+
+  const [payrollRecords, setPayrollRecords] = useState(() => {
+    const savedPayroll = localStorage.getItem("rbac_payroll_records");
+    if (!savedPayroll) {
+      return initialPayrollRecords;
+    }
+    try {
+      const parsedPayroll = JSON.parse(savedPayroll);
+      return Array.isArray(parsedPayroll)
+        ? parsedPayroll
+        : initialPayrollRecords;
+    } catch {
+      return initialPayrollRecords;
     }
   });
 
@@ -147,18 +165,89 @@ export function AppDataProvider({ children }) {
       });
     }
   };
+
+  const updatePayrollRecord = (payrollId, updatedData, actorInfo) => {
+    const payroll = payrollRecords.find((record) => record.id === payrollId);
+
+    setPayrollRecords((prevRecords) =>
+      prevRecords.map((record) =>
+        record.id === payrollId
+          ? {
+              ...record,
+              salary: Number(updatedData.salary),
+              bonus: Number(updatedData.bonus),
+              deductions: Number(updatedData.deductions),
+            }
+          : record,
+      ),
+    );
+
+    if (payroll) {
+      addAuditLog({
+        actor: actorInfo?.name || "Unknown User",
+        role: actorInfo?.role || "User",
+        action: "Updated payroll details",
+        target: payroll.employee,
+      });
+    }
+  };
+
+  const updatePayrollStatus = (payrollId, status, actorInfo) => {
+    const payroll = payrollRecords.find((record) => record.id === payrollId);
+
+    setPayrollRecords((prevRecords) =>
+      prevRecords.map((record) =>
+        record.id === payrollId ? { ...record, status } : record,
+      ),
+    );
+
+    if (payroll) {
+      addAuditLog({
+        actor: actorInfo?.name || "Unknown User",
+        role: actorInfo?.role || "User",
+        action: `Updated payroll status to ${status}`,
+        target: payroll.employee,
+      });
+    }
+  };
+
+  const addPayrollRecord = (employeeData, actorInfo) => {
+    const newPayrollRecord = {
+      id: crypto.randomUUID().slice(0, 4),
+      employee: employeeData.name,
+      department: employeeData.department,
+      salary: Number(employeeData.salary),
+      bonus: Number(employeeData.bonus || 0),
+      deductions: Number(employeeData.deductions || 0),
+      status: "Pending",
+    };
+
+    setPayrollRecords((prevRecords) => [newPayrollRecord, ...prevRecords]);
+
+    addAuditLog({
+      actor: actorInfo?.name || "Unknown User",
+      role: actorInfo?.role || "User",
+      action: "Created payroll record",
+      target: employeeData.name,
+    });
+  };
+
   const value = useMemo(
     () => ({
       employees,
       leaveRequests,
+      payrollRecords,
+      updatePayrollStatus,
+      updatePayrollRecord,
       auditLogs,
       requestLeave,
       addEmployee,
       updateEmployeeStatus,
       updateLeaveStatus,
       addAuditLog,
+      addPayrollRecord,
     }),
-    [employees, leaveRequests, auditLogs],
+    [employees, leaveRequests, payrollRecords, auditLogs],
   );
 
   return (

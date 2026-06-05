@@ -307,7 +307,11 @@ button {
   justify-content: space-between;
   padding: 0 32px;
 }
-
+.settings-save-message {
+  color: #15803d;
+  font-size: 14px;
+  font-weight: 700;
+}
 .topbar h2,
 .eyebrow {
   margin: 0;
@@ -761,6 +765,81 @@ button:disabled {
   display: none;
 }
 
+.btn-group {
+  display: flex;
+  gap: 10px;
+}
+.btn-group button, .edit-button {
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 6px 12px;
+  font-weight: 700;
+}
+.btn-group button.cancel-button {
+  background: #e2e8f0;
+  color: #172033;
+  border: none;
+}
+.btn-group button.cancel-button:hover { 
+   background: #ced0d1;
+}
+
+.status {
+  display: inline-block;
+  padding-block: 6px;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.payroll-table .status-header {
+  text-align: center;
+  width: 50px;
+}
+/* Payroll :modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 2000;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px;
+  display: grid;
+  gap: 18px;
+}
+
+.modal-card label {
+  display: grid;
+  gap: 8px;
+}
+
+.modal-card input {
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+}
+.edit-payroll {
+  border-radius: 10px;
+  font-size: 13px;
+  padding: 10px 12px;
+  font-weight: 700;
+  background: #0f172a;
+  color: #fff;
+}
+.edit-payroll:hover {
+  background: #26397d;
+}
+
 @media (max-width: 1024px) {
   .table-row {
     grid-template-columns: 1.3fr 1fr 1fr;
@@ -950,5 +1029,203 @@ button:disabled {
   .matrix-cell {
     min-height: 100px;
     text-align: center;
+  }
+}
+.payroll-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.payroll-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.payroll-table thead {
+  background: #f8fafc;
+}
+
+.payroll-table th,
+.payroll-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.payroll-table th {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.payroll-table td {
+  color: #475569;
+  font-size: 14px;
+}
+
+.payroll-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.payroll-table .employee-name,
+.payroll-table .net-pay {
+  color: #111827;
+  font-weight: 700;
+}
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.settings-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.settings-header h1 {
+  margin: 0;
+  color: #111827;
+  font-size: 28px;
+}
+
+.settings-header p {
+  max-width: 620px;
+  margin: 8px 0 0;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.settings-save-btn {
+  border: 0;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 18px;
+}
+
+.settings-save-btn:hover {
+  background: #1d4ed8;
+}
+
+.settings-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.settings-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 20px;
+}
+
+.settings-card-wide {
+  grid-column: 1 / -1;
+}
+
+.settings-card h2 {
+  margin: 0 0 18px;
+  color: #111827;
+  font-size: 18px;
+}
+
+.settings-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.settings-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.settings-form-group label {
+  color: #334155;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.settings-form-group input,
+.settings-form-group select {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111827;
+  font-size: 14px;
+  padding: 11px 12px;
+}
+
+.settings-form-group input:focus,
+.settings-form-group select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  outline: none;
+}
+
+.settings-toggle-list {
+  display: grid;
+  gap: 12px;
+}
+
+.settings-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #334155;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.settings-toggle input {
+  width: 16px;
+  height: 16px;
+  accent-color: #2563eb;
+}
+
+@media (max-width: 760px) {
+  .settings-header,
+  .settings-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-header {
+    flex-direction: column;
+  }
+
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-save-btn {
+    width: 100%;
+  }
+
+  .settings-actions {
+    align-items: stretch;
+    flex-direction: column;
+    width: 100%;
   }
 }

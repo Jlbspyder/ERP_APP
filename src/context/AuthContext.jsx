@@ -22,20 +22,19 @@ export function AuthProvider({ children }) {
     }
   });
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+  const savedUser = localStorage.getItem("rbac_user");
+
+  if (!savedUser) return null;
+
+  try {
+    return JSON.parse(savedUser);
+  } catch {
+    return null;
+  }
+});
+
   const [authError, setAuthError] = useState("");
-
-  useEffect(() => {
-    const savedUser = localStorage.getItem("rbac_user");
-
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("rbac_users", JSON.stringify(users));
-  }, [users]);
 
   const login = ({ email, password }) => {
     setAuthError("");

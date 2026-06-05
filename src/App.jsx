@@ -27,20 +27,24 @@ export default function App() {
           <Route
             path="/dashboard"
             element={
-              <ProtectedRoute requiredPermission="view_dashboard">
+              <ProtectedRoute>
                 <Dashboard />
               </ProtectedRoute>
             }
           />
           <Route
             path="/request-leave"
-            element={<RequestLeave />}
+            element={
+              <ProtectedRoute requiredPermission="Request_Leave">
+                <RequestLeave />
+              </ProtectedRoute>
+            }
           />
 
           <Route
             path="/employees"
             element={
-              <ProtectedRoute requiredPermission="view_employees">
+              <ProtectedRoute requiredPermission="View_Employees">
                 <Employees />
               </ProtectedRoute>
             }
@@ -49,7 +53,7 @@ export default function App() {
           <Route
             path="/leave-requests"
             element={
-              <ProtectedRoute requiredPermission="view_leave">
+              <ProtectedRoute requiredPermission="View_Leave">
                 <LeaveRequests />
               </ProtectedRoute>
             }
@@ -58,7 +62,7 @@ export default function App() {
           <Route
             path="/payroll"
             element={
-              <ProtectedRoute requiredPermission="view_payroll">
+              <ProtectedRoute requiredPermission="Manage_Payroll">
                 <Payroll />
               </ProtectedRoute>
             }
@@ -66,7 +70,7 @@ export default function App() {
           <Route
             path="/permissions"
             element={
-              <ProtectedRoute requiredPermission="view_settings">
+              <ProtectedRoute requiredPermission="View_Permissions">
                 <Permission />
               </ProtectedRoute>
             }
@@ -74,7 +78,7 @@ export default function App() {
           <Route
             path="/audit-logs"
             element={
-              <ProtectedRoute requiredPermission="view_settings">
+              <ProtectedRoute requiredPermission="View_Audit_Logs">
                 <AuditLog />
               </ProtectedRoute>
             }
@@ -82,16 +86,15 @@ export default function App() {
           <Route
             path="/roles"
             element={
-              <ProtectedRoute requiredPermission="view_settings">
+              <ProtectedRoute requiredPermission="View_Roles">
                 <Roles />
               </ProtectedRoute>
             }
           />
-
           <Route
             path="/settings"
             element={
-              <ProtectedRoute requiredPermission="view_settings">
+              <ProtectedRoute requiredPermission="View_Settings">
                 <Settings />
               </ProtectedRoute>
             }

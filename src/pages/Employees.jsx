@@ -11,6 +11,9 @@ const emptyForm = {
   department: "",
   role: "",
   status: "",
+  salary: "",
+  bonus: "",
+  deductions: "",
   password: "",
   confirmPassword: "",
 };
@@ -24,13 +27,12 @@ export default function Employees() {
   const [showForm, setShowForm] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { employees, addEmployee, updateEmployeeStatus } = useAppData();
+  const { employees, addEmployee, updateEmployeeStatus, addPayrollRecord } =
+    useAppData();
   const { showToast } = useToast();
   const { user, registerUser } = useAuth();
   const canManageEmployees = useCan("manage_employees");
   const hasPagination = useFeatureFlag("employeePagination");
-
-
 
   const filteredEmployees = useMemo(() => {
     return employees.filter((employee) => {
@@ -50,7 +52,6 @@ export default function Employees() {
       return matchesSearch && matchesStatus;
     });
   }, [employees, search, statusFilter]);
-
 
   const totalPages = Math.max(
     1,
@@ -73,7 +74,6 @@ export default function Employees() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -83,15 +83,23 @@ export default function Employees() {
       !formData.department.trim() ||
       !formData.role.trim() ||
       !formData.password.trim() ||
-      !formData.confirmPassword.trim()
+      !formData.confirmPassword.trim() ||
+      !formData.salary.trim()
     ) {
       showToast({
         message: "All fields are required.",
         type: "error",
       });
-
       return;
     }
+
+     if ( Number(formData.salary) <= 0) {
+        showToast({
+          message: "Salary must be greater than zero.",
+          type: "error",
+        });
+        return;
+      }
 
     if (formData.password.length < 6) {
       showToast({
@@ -110,7 +118,7 @@ export default function Employees() {
 
       return;
     }
-    
+
     const result = registerUser({
       name: formData.name,
       email: formData.email.trim().toLowerCase(),
@@ -127,16 +135,31 @@ export default function Employees() {
 
     addEmployee(
       {
-      name: formData.name,
-      email: formData.email.trim().toLowerCase(),
-      department: formData.department,
-      role: formData.role,
-      status: formData.status || "Active",
+        name: formData.name,
+        email: formData.email.trim().toLowerCase(),
+        department: formData.department,
+        role: formData.role,
+        status: formData.status || "Active",
       },
       {
         name: user?.name,
         role: user?.role,
-      });
+      },
+    );
+
+    addPayrollRecord(
+      {
+        name: formData.name,
+        department: formData.department,
+        salary: formData.salary,
+        bonus: formData.bonus,
+        deductions: formData.deductions,
+      },
+      {
+        name: user?.name,
+        role: user?.role,
+      },
+    );
 
     setFormData(emptyForm);
     setShowForm(false);
@@ -144,12 +167,11 @@ export default function Employees() {
 
   const handleStatusChange = (employeeId, status) => {
     updateEmployeeStatus(employeeId, status, {
-      name: user?.name
+      name: user?.name,
     });
-    
+
     showToast({ message: `Employee status updated to ${status}.` });
   };
-  
 
   const goToPage = (page) => {
     if (page < 1 || page > totalPages) return;
@@ -252,16 +274,50 @@ export default function Employees() {
               </select>
             </label>
 
-            <label htmlFor="status">Status
-            <select
-              name="status"
-              value={formData.status}
-              onChange={handleChange}
-            >
-              <option value="Active">Active</option>
-              <option value="On Leave">On Leave</option>
-              <option value="Inactive">Inactive</option>
-            </select>
+            <label>
+              Salary
+              <input
+                id="salary"
+                name="salary"
+                type="number"
+                value={formData.salary}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              Bonus
+              <input
+                id="bonus"
+                name="bonus"
+                type="number"
+                value={formData.bonus}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              Deductions
+              <input
+                id="deductions"
+                name="deductions"
+                type="number"
+                value={formData.deductions}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              Status
+              <select
+                name="status"
+                value={formData.status}
+                onChange={handleChange}
+              >
+                <option value="Active">Active</option>
+                <option value="On Leave">On Leave</option>
+                <option value="Inactive">Inactive</option>
+              </select>
             </label>
             <label>
               Role

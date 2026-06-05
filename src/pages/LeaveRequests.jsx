@@ -7,7 +7,7 @@ import { useAuth } from "../context/AuthContext.jsx";
 export default function LeaveRequests() {
   const { leaveRequests, updateLeaveStatus } = useAppData();
   const { showToast } = useToast();
-  const canApproveLeave = useCan("approve_leave");
+  const canApproveLeave = useCan("Approve_Leave");
   const { user } = useAuth();
   const [statusFilter, setStatusFilter] = useState("all");
 

@@ -1,0 +1,38 @@
+export const initialPayrollRecords = [
+  {
+    id: "1",
+    employee: "Debo Gbadebo",
+    department: "Engineering",
+    salary: 8000,
+    bonus: 3500,
+    deductions: 1500,
+    status: "Pending",
+  },
+  {
+    id: "2",
+    employee: "Helen Degeneries",
+    department: "Administration",
+    salary: 6200,
+    bonus: 3000,
+    deductions: 2000,
+    status: "Approved",
+  },
+  {
+    id: "3",
+    employee: "Michael Brookes",
+    department: "People",
+    salary: 6800,
+    bonus: 4500,
+    deductions: 3000,
+    status: "Pending",
+  },
+  {
+    id: "4",
+    employee: "Ella Fitgerald",
+    department: "Engineering",
+    salary: 6800,
+    bonus: 4500,
+    deductions: 3000,
+    status: "Pending",
+  },
+];
