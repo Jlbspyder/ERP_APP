@@ -32,6 +32,10 @@ A modern Enterprise Resource Planning (ERP) application built with React, featur
 -   Modular reusable components
 -   Protected routes and permission guards
 
+### Links
+
+- Live Site URL: [https://jlb-rbac-erp.netlify.app/dashboard](https://jlb-rbac-erp.netlify.app/)
+
 
 ## Tech Stack
 
